@@ -13,10 +13,10 @@ class Book extends Component {
                            <div className="book-shelf-changer">
                              <select>
                                <option value="move" disabled>Move to...</option>
-                               <option value="currentlyReading">Currently Reading</option>
+                               <option value="currentlyReading" selected="selected">Currently Reading</option>
                                <option value="wantToRead">Want to Read</option>
                                <option value="read">Read</option>
-                               <option value="none">None</option>
+                               <option value="none"  >None</option>
                              </select>
                            </div>
                          </div>
@@ -24,6 +24,10 @@ class Book extends Component {
                          <div className="book-authors">Orson Scott Card</div>
                        </div>
                      )
+  }
+
+  setLocalState : () => {
+
   }
 
 }
