@@ -51,7 +51,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
 
                       <li>
-                        <Book bookState="Currently Reading" title="Ender's Game" author="Orson Scott Card"/>
+                        <Book bookState="currentlyReading" title="Ender's Game" author="Orson Scott Card"/>
                       </li>
                     </ol>
                   </div>
