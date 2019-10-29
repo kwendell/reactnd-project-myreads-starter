@@ -13,9 +13,10 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false
   }
-  constructor() {
-    super();
+  
 
+  componentDidMount() {
+  console.log("componentDidMount")
   }
 
   updateView = () => {
