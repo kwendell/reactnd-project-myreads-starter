@@ -13,6 +13,14 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false
   }
+  constructor() {
+    super();
+
+  }
+
+  updateView = () => {
+   console.log("updateView from parent");
+  };
 
   render() {
     return (
@@ -51,7 +59,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
 
                       <li>
-                        <Book bookState="currentlyReading" title="Ender's Game" author="Orson Scott Card"/>
+                        <Book bookState="currentlyReading" title="Ender's Game" author="Orson Scott Card" updateView={this.updateView}/>
                       </li>
                     </ol>
                   </div>

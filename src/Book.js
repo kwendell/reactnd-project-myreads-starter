@@ -16,23 +16,24 @@ class Book extends Component {
   {value:"none",text:"None"}];
   constructor(argumentList) {
     super(argumentList);
-
+    this.updateViewFromChild = this.updateViewFromChild.bind(this)
     this.setState({
       bookState: argumentList.bookState
     });
-
-    this.state = {bookState:argumentList.bookState};
-
-    console.log(argumentList.bookState);
-    console.log(this.state.bookState);
-
 
 
 
   }
 
+  updateViewFromChild(e){
+      console.log(e.target.value);
+   this.props.updateView();
+   }
+
   handleChange(e)  {
-    //console.log(e.target.value);
+
+
+
   }
   render() {
 
@@ -40,7 +41,7 @@ class Book extends Component {
                          <div className="book-top">
                            <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: 'url("http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api")' }}></div>
                            <div className="book-shelf-changer">
-                             <select onChange={this.handleChange} value={this.state.bookState}>
+                             <select onChange={this.updateViewFromChild} value={this.state.bookState}>
                               {this.possibleBookStates.map((obj) => <option value={obj.value}>{obj.text}</option>)}
                               </select>
                            </div>
