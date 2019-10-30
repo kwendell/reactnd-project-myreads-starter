@@ -1,6 +1,8 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
+
+import Shelf from './Shelf.js'
 import Book from './Book.js'
 import * as BooksAPI from './BooksAPI'
 
@@ -15,6 +17,8 @@ class BooksApp extends React.Component {
     showSearchPage: false
   }
 
+  books:[]
+
 
   componentDidMount() {
     BooksAPI.getAll()
@@ -25,9 +29,26 @@ class BooksApp extends React.Component {
       })
   }
 
+
   updateView = () => {
-   console.log("updateView from parent");
-   console.log(this.state.books);
+    console.log("App:updateView");
+    BooksAPI.getAll()
+      .then((books) => {
+        this.setState(() => ({
+          books
+        }))
+      })
+
+      // keys are: title, authors[],publisher,publishedDate, shelf
+
+   /*
+   ["title", "subtitle", "authors", "publisher", "publishedDate", "description",
+   "industryIdentifiers", "readingModes", "pageCount", "printType", "categories",
+   "averageRating", "ratingsCount", "maturityRating", "allowAnonLogging", "contentVersion",
+   "panelizationSummary", "imageLinks", "language", "previewLink", "infoLink",
+   "canonicalVolumeLink", "id", "shelf"]
+   */
+   console.log(this.state.books[0].shelf);
   };
 
   render() {
@@ -61,22 +82,12 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
 
-                      <li>
-                        <Book bookState="currentlyReading" title="Ender's Game" author="Orson Scott Card" updateView={this.updateView}/>
-                      </li>
-                    </ol>
-                  </div>
-                </div>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Want to Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-
+<Book bookState="currentlyReading" title="Ender's Game" author="Orson Scott Card" />
 
                     </ol>
                   </div>
@@ -87,7 +98,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
 
 
-                                      </ol>
+                    </ol>
                   </div>
                 </div>
               </div>
