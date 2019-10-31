@@ -3,7 +3,7 @@ import React from 'react'
 import './App.css'
 
 import Shelf from './Shelf.js'
-import Book from './Book.js'
+
 import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends React.Component {
@@ -17,27 +17,22 @@ class BooksApp extends React.Component {
     showSearchPage: false
   }
 
-  books:[]
+
 
 
   componentDidMount() {
+
     BooksAPI.getAll()
       .then((books) => {
         this.setState(() => ({
           books
         }))
       })
+console.log(this.state.books.length);
   }
 
 
-  updateView = () => {
-    console.log("App:updateView");
-    BooksAPI.getAll()
-      .then((books) => {
-        this.setState(() => ({
-          books
-        }))
-      })
+
 
       // keys are: title, authors[],publisher,publishedDate, shelf
 
@@ -48,8 +43,8 @@ class BooksApp extends React.Component {
    "panelizationSummary", "imageLinks", "language", "previewLink", "infoLink",
    "canonicalVolumeLink", "id", "shelf"]
    */
-   console.log(this.state.books[0].shelf);
-  };
+
+
 
   render() {
     return (
@@ -83,15 +78,7 @@ class BooksApp extends React.Component {
             <div className="list-books-content">
               <div>
 
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-<Book bookState="currentlyReading" title="Ender's Game" author="Orson Scott Card" />
-
-                    </ol>
-                  </div>
-                </div>
+              <Shelf fullBookList={this.state.books} label="Currently Reading"/>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Read</h2>
                   <div className="bookshelf-books">

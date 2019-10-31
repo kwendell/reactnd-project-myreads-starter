@@ -8,7 +8,8 @@ class Shelf extends Component {
   }
 
   constructor(props)   {
-    console.log(props.allBooks.length);
+    super(props);
+      console.log(props.fullBookList);
   }
 
 

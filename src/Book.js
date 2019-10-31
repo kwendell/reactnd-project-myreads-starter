@@ -18,7 +18,7 @@ class Book extends Component {
   constructor(argumentList) {
     super(argumentList);
   //  this.updateViewFromChild = this.updateViewFromChild.bind(this)
-
+  
     this.setState({
       shelf: argumentList.shelf
     });
